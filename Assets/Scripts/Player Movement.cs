@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(moveDirection * currentMovementSpeed * 10);
-        Debug.Log(rb.linearVelocity.x);
 
         if(isMoving)
         {
