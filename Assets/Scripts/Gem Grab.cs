@@ -8,6 +8,7 @@ public class GemGrab : MonoBehaviour
     GameObject player;
     GemBag gemBag;
     Collider2D gemTrigger;
+    
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
