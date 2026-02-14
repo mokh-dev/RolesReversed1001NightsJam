@@ -6,12 +6,12 @@ public class GoldGrab : MonoBehaviour
     [SerializeField] float timeToWake;
     [SerializeField] int goldAmmount;
     GameObject player;
-    GoldBag goldBag;
+    PlayerInventory goldBag;
     Collider2D goldTrigger;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        goldBag = player.GetComponent<GoldBag>();
+        goldBag = player.GetComponent<PlayerInventory>();
         goldTrigger = GetComponent<Collider2D>();
         goldTrigger.enabled = false;
 

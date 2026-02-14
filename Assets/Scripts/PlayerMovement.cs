@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveDirection;
     Rigidbody2D rb;
     Transform noiseRadius;
-    GoldBag goldBag;
+    PlayerInventory goldBag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         noiseRadius = transform.GetChild(0).GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         currentMovementSpeed = moveSpeed;
-        goldBag = GetComponent<GoldBag>();
+        goldBag = GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -106,4 +106,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
 }

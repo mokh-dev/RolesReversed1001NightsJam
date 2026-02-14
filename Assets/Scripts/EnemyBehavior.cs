@@ -11,7 +11,6 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float _alertThreshhold = 15;
 
     [Header("Vision Detection")]
-    [SerializeField] private float _detectionFovAngle;
     [SerializeField] private float _detectionRange;
     [SerializeField] private LayerMask _distractionDetectionLayers;
     [SerializeField] private LayerMask _playerDetectionLayers;
@@ -29,16 +28,14 @@ public class EnemyBehavior : MonoBehaviour
     //Complex Variables
     SpriteRenderer sr;
     GameObject player;
-    GoldBag goldBag;
-    GemBag gemBag;
+
+
 
 //Starts and Updates-----------------------------------------------------------------------------------------
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        goldBag = player.GetComponent<GoldBag>();
-        gemBag = player.GetComponent<GemBag>();
     }
 
     void Update()
@@ -51,8 +48,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            goldBag.removeGold(1);
-            gemBag.removeGems(1);
+            //
         }
     }
 
@@ -190,6 +186,8 @@ public class EnemyBehavior : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(_visionStartPoint.position, objDirection, _detectionRange, detectionLayers);
 
+        if (hit.collider == null) return false;
+        
         return hit.collider.gameObject == objInVisionCollider;
     }
 }
