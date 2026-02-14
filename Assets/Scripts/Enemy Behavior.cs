@@ -28,11 +28,15 @@ public class EnemyBehavior : MonoBehaviour
     
     //Complex Variables
     SpriteRenderer sr;
+    GameObject player;
+    GoldBag goldBag;
 
 //Starts and Updates-----------------------------------------------------------------------------------------
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        goldBag = player.GetComponent<GoldBag>();
     }
 
     void Update()
@@ -40,7 +44,15 @@ public class EnemyBehavior : MonoBehaviour
 
     }
 
-//Colliders and Triggers-------------------------------------------------------------------------------------
+    //Colliders and Triggers-------------------------------------------------------------------------------------
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            goldBag.removeGold(1);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Noise"))

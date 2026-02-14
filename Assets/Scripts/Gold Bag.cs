@@ -3,17 +3,45 @@ using UnityEngine.UI;
 
 public class GoldBag : MonoBehaviour
 {
-    Slider slider;
+    [SerializeField] Slider slider;
     [SerializeField] Vector3 Offset;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] int maxGold = 5;
+    int currentGold;
+
     void Awake()
     {
-        slider = GetComponentInChildren<Slider>();
+        currentGold = maxGold;
+        slider.maxValue = maxGold;
+        slider.value = currentGold;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetGold(int gold)
     {
-        slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
+        if(gold <= maxGold && gold >= 0)
+        {
+            currentGold = gold;
+            slider.value = currentGold;
+        }
+        else if(gold > maxGold)
+        {
+            currentGold = maxGold;
+            slider.value = currentGold;
+        }
+        else if (gold < 0)
+        {
+            currentGold = 0;
+            slider.value = currentGold;
+        }
+        slider.gameObject.SetActive(gold < maxGold);
+    }
+
+    public void addGold(int gold)
+    {
+        SetGold(currentGold + gold);
+    }
+
+    public void removeGold(int gold)
+    {
+        SetGold(currentGold - gold);
     }
 }
