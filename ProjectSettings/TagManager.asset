@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Noise
   - Distraction
+  - Gold Grab
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Player
   - Wall
   - Distraction
-  - 
-  - 
+  - Gold
+  - Noise
   - 
   - 
   - 

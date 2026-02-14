@@ -44,4 +44,14 @@ public class GoldBag : MonoBehaviour
     {
         SetGold(currentGold - gold);
     }
+
+    public int getCurrentGold()
+    {
+        return currentGold;
+    }
+
+    public int getMaxGold()
+    {
+        return maxGold;
+    }
 }
