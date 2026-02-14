@@ -30,6 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     SpriteRenderer sr;
     GameObject player;
     GoldBag goldBag;
+    GemBag gemBag;
 
 //Starts and Updates-----------------------------------------------------------------------------------------
     void Start()
@@ -37,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
         goldBag = player.GetComponent<GoldBag>();
+        gemBag = player.GetComponent<GemBag>();
     }
 
     void Update()
@@ -50,6 +52,7 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             goldBag.removeGold(1);
+            gemBag.removeGems(1);
         }
     }
 

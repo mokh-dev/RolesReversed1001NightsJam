@@ -7,6 +7,9 @@ TagManager:
   - Noise
   - Distraction
   - Gold Grab
+  - Button
+  - Door
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Distraction
   - Gold
   - Noise
-  - 
+  - Gem
   - 
   - 
   - 

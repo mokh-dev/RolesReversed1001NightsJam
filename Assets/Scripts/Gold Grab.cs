@@ -12,7 +12,8 @@ public class GoldGrab : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         goldBag = player.GetComponent<GoldBag>();
-        goldTrigger = GetComponent<CircleCollider2D>();
+        goldTrigger = GetComponent<Collider2D>();
+        goldTrigger.enabled = false;
 
         StartCoroutine(startTrigger(timeToWake));
     }
