@@ -13,15 +13,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movingRadius = 5;
     [SerializeField] float sprintingRadius = 7;
     [SerializeField] float sneakingRaius = 3;
+    [SerializeField] float timeToDropGold = 3;
 
 
     bool isMoving = false;
     bool isSprinting = false;
     bool isSneaking = false;
     float currentMovementSpeed = 0;
+    float goldDropTimer;
     Vector2 moveDirection;
     Rigidbody2D rb;
     Transform noiseRadius;
+    GoldBag goldBag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         noiseRadius = transform.GetChild(0).GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         currentMovementSpeed = moveSpeed;
+        goldBag = GetComponent<GoldBag>();
     }
 
     // Update is called once per frame
@@ -45,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
             else if(isSprinting)
             {
                 noiseRadius.localScale = new(sprintingRadius, sprintingRadius, sprintingRadius);
+                goldDropTimer += Time.deltaTime;
+                if(goldDropTimer >= timeToDropGold)
+                {
+                    goldBag.removeGold(1);
+                    goldDropTimer = 0;
+                }
             }
             else
             {
