@@ -9,5 +9,4 @@ public class CardScriptableObject : ScriptableObject
 
     public Sprite frontSprite;
     public Sprite backSprite;
-
 }
