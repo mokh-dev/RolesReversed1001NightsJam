@@ -7,8 +7,8 @@ public class Gem : MonoBehaviour
     [SerializeField] private float _gemIdleRange;
     [SerializeField] private Color _heldGemColor;
     [SerializeField] private Color _releasedGemColor;
-    [SerializeField] private LayerMask _baseCollisionLayers;
-    [SerializeField] private LayerMask _throwCollisionLayers;
+    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private LayerMask _nothingLayer;
 
     private bool isHeld;
     private GameObject objToFollow;
@@ -26,7 +26,8 @@ public class Gem : MonoBehaviour
         sr = gameObject.GetComponent<SpriteRenderer>();
 
         col = gameObject.GetComponent<Collider2D>();
-        col.excludeLayers = _baseCollisionLayers;
+        col.excludeLayers = _nothingLayer;
+        col.includeLayers = _playerLayer;
     }
 
 
@@ -50,9 +51,11 @@ public class Gem : MonoBehaviour
 
     IEnumerator CollisionLayersTimer()
     {
-        col.excludeLayers = _throwCollisionLayers;
+        col.includeLayers = _nothingLayer;
+        col.excludeLayers = _playerLayer;
         yield return new WaitForSeconds(0.5f);
-        col.excludeLayers = _baseCollisionLayers;
+        col.includeLayers = _playerLayer;
+        col.excludeLayers = _nothingLayer;
     }
     
     void Update()

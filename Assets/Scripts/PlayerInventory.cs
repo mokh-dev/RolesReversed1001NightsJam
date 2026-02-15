@@ -66,6 +66,8 @@ public class PlayerInventory : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gem"))
         {
+            if (heldGems.Contains(collision.gameObject.GetComponent<Gem>())) return;
+            
             collision.gameObject.GetComponent<Gem>().HoldGem(this.gameObject);
             heldGems.Add(collision.gameObject.GetComponent<Gem>());
         }

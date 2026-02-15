@@ -11,6 +11,11 @@ public class EnemyVision : MonoBehaviour
         enemyParent = transform.parent.gameObject.GetComponent<EnemyBehavior>();
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        enemyParent.OnVisionColliderEnter(collision);
+    }
+
 
     void OnTriggerStay2D(Collider2D collision)
     {

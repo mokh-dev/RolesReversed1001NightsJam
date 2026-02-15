@@ -15,18 +15,46 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private LayerMask _distractionDetectionLayers;
     [SerializeField] private LayerMask _playerDetectionLayers;
     [SerializeField] private Transform _visionStartPoint;
+    [SerializeField] private float _lookRotationOffset;
+
+    [Header("Enemy Movement")]
+    [SerializeField] private float _patrolMovementSpeed;
+    [SerializeField] private float _distractionMovementSpeed;
+    [SerializeField] private float _chasingMovementSpeed;
+    [SerializeField] private float _lookSmoothing;
+    [SerializeField] private float _distractionCalmDownTime;
+    [SerializeField] private float _chaseCalmDownTime;
+    [SerializeField] private float _patrolPointStopTime;
+    [SerializeField] private Vector2[] _patrolPathPoints;
+
 
     //Basic Variables
     bool heardNoise = false;
     bool isLooping = false;
+    
     float alertMeter = 0;
     float timer = 0;
+    float ySmoothVelo = 0.0f;
 
-    bool canSeePlayer;
-    bool canSeeDistraction;
+    //serialized for easier debugging
+    [Header("Debugging")]
+    [SerializeField] bool canSeePlayer;
+    [SerializeField] bool canSeeDistraction;
+
+    [SerializeField] bool isDistracted;
+    [SerializeField] bool onPatrol = true;
+    [SerializeField] bool onCalmDownTimer;
+    [SerializeField] bool onDistractionTimer;
+    [SerializeField] bool onPatrolPointStopCooldown;
+    [SerializeField] int currentTargetPatrolPoint;
+
+
+    GameObject distractionObject;
+    Vector2 lastSeenDistractionPosition;
     
     //Complex Variables
     SpriteRenderer sr;
+    Rigidbody2D rb;
     GameObject player;
 
 
@@ -35,20 +63,147 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        if (canSeePlayer)
+        {
+            Chasing();
+        } 
+
+        if (canSeeDistraction && distractionObject != null && !canSeePlayer)
+        {
+            isDistracted = true;
+        }
+        else
+        {
+            isDistracted = false;
+        }
+
+
+        if (!canSeeDistraction && !canSeePlayer)
+        {
+            onPatrol = true;
+        }
+        else
+        {
+            onPatrol = false;
+        }
+
+
+        if (isDistracted) Distracted();
+        if (onPatrol && !onCalmDownTimer && !onDistractionTimer) Patrolling();
 
     }
+
+    void Patrolling()
+    {
+        if (_patrolPathPoints.Length <= 0) return;
+        if (onPatrolPointStopCooldown == true) return;
+
+        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
+
+        bool withinMarginOfPatrolPoint = Vector2.Distance(transform.position, _patrolPathPoints[currentTargetPatrolPoint]) <= 0.05f;
+        
+        if (withinMarginOfPatrolPoint == true && onPatrolPointStopCooldown == false)
+        {
+            StartCoroutine(PatrolPointStopCooldown());
+            return;
+        }
+
+        Vector2 targetPatrolPointDirection = (_patrolPathPoints[currentTargetPatrolPoint] - (Vector2)transform.position).normalized;
+        rb.AddForce(targetPatrolPointDirection * _patrolMovementSpeed);
+    }
+
+    IEnumerator PatrolPointStopCooldown()
+    {
+        onPatrolPointStopCooldown = true;
+        yield return new WaitForSeconds(_patrolPointStopTime);
+
+        currentTargetPatrolPoint = (currentTargetPatrolPoint == _patrolPathPoints.Length-1) ? 0 : currentTargetPatrolPoint+1;
+        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
+
+        onPatrolPointStopCooldown = false;
+    }
+
+    void Chasing()
+    {   
+        LookAtPosition(player.transform.position);
+
+        Vector2 playerDirection = (player.transform.position - transform.position).normalized;
+        rb.AddForce(playerDirection * _chasingMovementSpeed);
+    }
+
+    void Distracted()
+    {
+        Vector2 distractionDirection;
+        
+        if (canSeeDistraction)
+        {
+            LookAtPosition(distractionObject.transform.position);
+            distractionDirection = (distractionObject.transform.position - transform.position).normalized;
+        }
+        else
+        {
+            LookAtPosition(lastSeenDistractionPosition);
+            distractionDirection = (lastSeenDistractionPosition - (Vector2)transform.position).normalized;
+        }
+        
+        rb.AddForce(distractionDirection * _distractionMovementSpeed);
+    }
+
+    private void LookAtPosition(Vector2 positionToLook)
+    {
+        Vector2 lookDirection = (positionToLook - (Vector2)transform.position).normalized;
+        float enemyAngle = (Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg) + _lookRotationOffset;
+
+        
+        //float smoothedAngled = Mathf.SmoothDampAngle(transform.rotation.z, enemyAngle, ref ySmoothVelo, _lookSmoothing);
+
+        rb.SetRotation(enemyAngle);
+    }
+
+    IEnumerator ChaseCalmDownTimer()
+    {
+        onCalmDownTimer = true;
+        yield return new WaitForSeconds(_chaseCalmDownTime);
+
+        onCalmDownTimer = false;
+    }
+
+    IEnumerator DistractionLastSeenPos()
+    {
+        bool withinMarginOfLastSeenPos = Vector2.Distance(transform.position, lastSeenDistractionPosition) <= 0.05f;
+        yield return new WaitUntil(() => withinMarginOfLastSeenPos == true);
+
+        StartCoroutine(DistractionCalmDownTimer());
+    }
+    IEnumerator DistractionCalmDownTimer()
+    {
+        onDistractionTimer = true;
+
+        canSeeDistraction = false;
+        distractionObject = null;
+
+        yield return new WaitForSeconds(_distractionCalmDownTime);
+        onDistractionTimer = false;
+    }
+
 
     //Colliders and Triggers-------------------------------------------------------------------------------------
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             //player.GetComponent<PlayerInventory>().removeGold(1);
+        }
+
+        if ((distractionObject != null) && (collision.gameObject == distractionObject))
+        {
+            StartCoroutine(DistractionCalmDownTimer());
         }
     }
 
@@ -77,16 +232,13 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void OnVisionColliderStay(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            canSeePlayer = RaycastCheck(collision.gameObject, _playerDetectionLayers);
-        }
 
-        if (collision.gameObject.CompareTag("Distraction"))
+    public void OnVisionColliderEnter(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Distraction") || collision.gameObject.CompareTag("Gem"))
         {
-            canSeeDistraction = RaycastCheck(collision.gameObject, _distractionDetectionLayers);
+            if (RaycastCheck(collision.gameObject, _distractionDetectionLayers)) canSeeDistraction = true;
+            distractionObject = collision.gameObject;
         }
     }
 
@@ -95,12 +247,24 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             canSeePlayer = false;
+            StartCoroutine(ChaseCalmDownTimer());
         }
-        if (collision.gameObject.CompareTag("Distraction"))
+
+        if (collision.gameObject.CompareTag("Distraction") || collision.gameObject.CompareTag("Gem"))
         {
+            lastSeenDistractionPosition = collision.gameObject.transform.position;
             canSeeDistraction = false;
+            StartCoroutine(DistractionLastSeenPos());
         }
     }
+    public void OnVisionColliderStay(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canSeePlayer = RaycastCheck(collision.gameObject, _playerDetectionLayers);
+        }
+    }
+
 
 //Custom Methods---------------------------------------------------------------------------------------------
     void addAlert(float alert)

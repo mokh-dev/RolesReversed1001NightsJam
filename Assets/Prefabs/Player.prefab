@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57b4f6d484b68744952a767dc735a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  anim: {fileID: 0}
   moveSpeed: 20
   sprintSpeed: 30
   sneakSpeed: 10
@@ -398,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GoldBag
   slider: {fileID: 3789269766918597808}
   maxGold: 5
-  _gemThrowForce: 10
+  _gemThrowForce: 6
 --- !u!50 &351827338111730220
 Rigidbody2D:
   serializedVersion: 5
