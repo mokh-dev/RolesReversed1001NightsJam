@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Animator anim;
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 20;
     [SerializeField] float sprintSpeed = 30;
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(isSneaking)
             {
-               noiseRadius.localScale = new(sneakingRaius, sneakingRaius, sneakingRaius);
+                noiseRadius.localScale = new(sneakingRaius, sneakingRaius, sneakingRaius);
             }
             else if(isSprinting)
             {
