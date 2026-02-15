@@ -48,7 +48,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            //
+            //player.GetComponent<PlayerInventory>().removeGold(1);
         }
     }
 
