@@ -1236,6 +1236,7 @@ GameObject:
   - component: {fileID: 1370896512}
   - component: {fileID: 1370896514}
   - component: {fileID: 1370896513}
+  - component: {fileID: 1370896515}
   m_Layer: 0
   m_Name: Button
   m_TagString: Button
@@ -1368,6 +1369,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1370896515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370896511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a909c32faf3d54fb32952c0cda01df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!1 &1535779233
 GameObject:
   m_ObjectHideFlags: 0
