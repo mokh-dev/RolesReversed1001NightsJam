@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: cf37420002bcf674fa1dd87cb24fee82
+guid: 2f63eca7286876e4784036485a294f3c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2640191038770636793
-    second: idle-0003-Sheet_0
+      213: 7299389289233957392
+    second: coin-0005-Sheet_0
   - first:
-      213: -8241342807825330050
-    second: idle-0003-Sheet_1
+      213: 1064305454615655078
+    second: coin-0005-Sheet_1
   - first:
-      213: 868508018918426717
-    second: idle-0003-Sheet_2
+      213: -7475115795113922820
+    second: coin-0005-Sheet_2
   - first:
-      213: -3316025852655755619
-    second: idle-0003-Sheet_3
+      213: -3580168130080308448
+    second: coin-0005-Sheet_3
   - first:
-      213: 2600083908937925895
-    second: idle-0003-Sheet_4
+      213: -8853101148955438929
+    second: coin-0005-Sheet_4
   - first:
-      213: 1600451927895069441
-    second: idle-0003-Sheet_5
+      213: -7879459571878520907
+    second: coin-0005-Sheet_5
   - first:
-      213: -6548941640146187805
-    second: idle-0003-Sheet_6
+      213: -7889551806420418103
+    second: coin-0005-Sheet_6
   - first:
-      213: -2070024872619345855
-    second: idle-0003-Sheet_7
+      213: 549890049477946595
+    second: coin-0005-Sheet_7
+  - first:
+      213: 6742656224057405736
+    second: coin-0005-Sheet_8
+  - first:
+      213: 8511520041161346747
+    second: coin-0005-Sheet_9
+  - first:
+      213: 8150298331701961998
+    second: coin-0005-Sheet_10
+  - first:
+      213: 4290854495406314671
+    second: coin-0005-Sheet_11
+  - first:
+      213: 8815572303550118881
+    second: coin-0005-Sheet_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -122,7 +137,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -135,7 +150,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,13 +162,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle-0003-Sheet_0
+      name: coin-0005-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 12
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f7e71de2c7d3a420800000000000000
-      internalID: 2640191038770636793
+      spriteID: 012c41e72e3ac4560800000000000000
+      internalID: 7299389289233957392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_1
+      name: coin-0005-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 44
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e70d95b716ed0ad80800000000000000
-      internalID: -8241342807825330050
+      spriteID: 6a270ea0c2c25ce00800000000000000
+      internalID: 1064305454615655078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_2
+      name: coin-0005-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 76
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d580630117f8d0c00800000000000000
-      internalID: 868508018918426717
+      spriteID: cfea2590acd034890800000000000000
+      internalID: -7475115795113922820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_3
+      name: coin-0005-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
+        x: 108
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9e117a5e0c1bf1d0800000000000000
-      internalID: -3316025852655755619
+      spriteID: 0238362ed00b05ec0800000000000000
+      internalID: -3580168130080308448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_4
+      name: coin-0005-Sheet_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
+        x: 140
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +265,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70544721a8a551420800000000000000
-      internalID: 2600083908937925895
+      spriteID: fa098e72967732580800000000000000
+      internalID: -8853101148955438929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_5
+      name: coin-0005-Sheet_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
+        x: 172
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,20 +287,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10356428c82f53610800000000000000
-      internalID: 1600451927895069441
+      spriteID: 5b7112c344986a290800000000000000
+      internalID: -7879459571878520907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_6
+      name: coin-0005-Sheet_6
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
+        x: 204
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,20 +309,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e9825ca64c7d15a0800000000000000
-      internalID: -6548941640146187805
+      spriteID: 9c10545ce6ea28290800000000000000
+      internalID: -7889551806420418103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_7
+      name: coin-0005-Sheet_7
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
+        x: 236
+        y: 12
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,8 +331,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 148fc47885bc543e0800000000000000
-      internalID: -2070024872619345855
+      spriteID: 3eca7a8261a91a700800000000000000
+      internalID: 549890049477946595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-0005-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 12
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821b4859c1ab29d50800000000000000
+      internalID: 6742656224057405736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-0005-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 12
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe4a08a16efe1670800000000000000
+      internalID: 8511520041161346747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-0005-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 12
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e05ed8a862dab1170800000000000000
+      internalID: 8150298331701961998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-0005-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 12
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa4d49dfd6d2c8b30800000000000000
+      internalID: 4290854495406314671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-0005-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 12
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb70ec9d44375a70800000000000000
+      internalID: 8815572303550118881
       vertices: []
       indices: 
       edges: []
@@ -326,7 +451,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d39af8adec2cb9d41b0fa6a871240097
+    spriteID: 75178262288fd5748b2c8abefaa3ad82
     internalID: 0
     vertices: []
     indices: 
@@ -336,16 +461,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      idle-0003-Sheet_0: 2640191038770636793
-      idle-0003-Sheet_1: -8241342807825330050
-      idle-0003-Sheet_2: 868508018918426717
-      idle-0003-Sheet_3: -3316025852655755619
-      idle-0003-Sheet_4: 2600083908937925895
-      idle-0003-Sheet_5: 1600451927895069441
-      idle-0003-Sheet_6: -6548941640146187805
-      idle-0003-Sheet_7: -2070024872619345855
+      coin-0005-Sheet_0: 7299389289233957392
+      coin-0005-Sheet_1: 1064305454615655078
+      coin-0005-Sheet_10: 8150298331701961998
+      coin-0005-Sheet_11: 4290854495406314671
+      coin-0005-Sheet_12: 8815572303550118881
+      coin-0005-Sheet_2: -7475115795113922820
+      coin-0005-Sheet_3: -3580168130080308448
+      coin-0005-Sheet_4: -8853101148955438929
+      coin-0005-Sheet_5: -7879459571878520907
+      coin-0005-Sheet_6: -7889551806420418103
+      coin-0005-Sheet_7: 549890049477946595
+      coin-0005-Sheet_8: 6742656224057405736
+      coin-0005-Sheet_9: 8511520041161346747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

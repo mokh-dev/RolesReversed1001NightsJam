@@ -15,13 +15,11 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private LayerMask _distractionDetectionLayers;
     [SerializeField] private LayerMask _playerDetectionLayers;
     [SerializeField] private Transform _visionStartPoint;
-    [SerializeField] private float _lookRotationOffset;
 
     [Header("Enemy Movement")]
     [SerializeField] private float _patrolMovementSpeed;
     [SerializeField] private float _distractionMovementSpeed;
     [SerializeField] private float _chasingMovementSpeed;
-    [SerializeField] private float _lookSmoothing;
     [SerializeField] private float _distractionCalmDownTime;
     [SerializeField] private float _chaseCalmDownTime;
     [SerializeField] private float _patrolPointStopTime;
@@ -69,6 +67,8 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
+        SpriteFlip();
+
         if (canSeePlayer)
         {
             Chasing();
@@ -99,12 +99,16 @@ public class EnemyBehavior : MonoBehaviour
 
     }
 
+    void SpriteFlip()
+    {
+        if (rb.linearVelocityX > 0) sr.flipX = false;
+        else if (rb.linearVelocityX < 0) sr.flipX = true;
+    }
+
     void Patrolling()
     {
         if (_patrolPathPoints.Length <= 0) return;
         if (onPatrolPointStopCooldown == true) return;
-
-        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
 
         bool withinMarginOfPatrolPoint = Vector2.Distance(transform.position, _patrolPathPoints[currentTargetPatrolPoint]) <= 0.05f;
         
@@ -124,15 +128,11 @@ public class EnemyBehavior : MonoBehaviour
         yield return new WaitForSeconds(_patrolPointStopTime);
 
         currentTargetPatrolPoint = (currentTargetPatrolPoint == _patrolPathPoints.Length-1) ? 0 : currentTargetPatrolPoint+1;
-        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
-
         onPatrolPointStopCooldown = false;
     }
 
     void Chasing()
     {   
-        LookAtPosition(player.transform.position);
-
         Vector2 playerDirection = (player.transform.position - transform.position).normalized;
         rb.AddForce(playerDirection * _chasingMovementSpeed);
     }
@@ -143,29 +143,15 @@ public class EnemyBehavior : MonoBehaviour
         
         if (canSeeDistraction)
         {
-            LookAtPosition(distractionObject.transform.position);
             distractionDirection = (distractionObject.transform.position - transform.position).normalized;
         }
         else
         {
-            LookAtPosition(lastSeenDistractionPosition);
             distractionDirection = (lastSeenDistractionPosition - (Vector2)transform.position).normalized;
         }
         
         rb.AddForce(distractionDirection * _distractionMovementSpeed);
     }
-
-    private void LookAtPosition(Vector2 positionToLook)
-    {
-        Vector2 lookDirection = (positionToLook - (Vector2)transform.position).normalized;
-        float enemyAngle = (Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg) + _lookRotationOffset;
-
-        
-        //float smoothedAngled = Mathf.SmoothDampAngle(transform.rotation.z, enemyAngle, ref ySmoothVelo, _lookSmoothing);
-
-        rb.SetRotation(enemyAngle);
-    }
-
     IEnumerator ChaseCalmDownTimer()
     {
         onCalmDownTimer = true;

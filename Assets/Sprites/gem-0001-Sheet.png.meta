@@ -1,31 +1,43 @@
 fileFormatVersion: 2
-guid: cf37420002bcf674fa1dd87cb24fee82
+guid: 264077f591b16da4cba178a963cd393b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2640191038770636793
-    second: idle-0003-Sheet_0
+      213: 3163429423914185971
+    second: gem-0001-Sheet_0
   - first:
-      213: -8241342807825330050
-    second: idle-0003-Sheet_1
+      213: -1268324796930440752
+    second: gem-0001-Sheet_1
   - first:
-      213: 868508018918426717
-    second: idle-0003-Sheet_2
+      213: -6204591593730864862
+    second: gem-0001-Sheet_2
   - first:
-      213: -3316025852655755619
-    second: idle-0003-Sheet_3
+      213: -96438925001853323
+    second: gem-0001-Sheet_3
   - first:
-      213: 2600083908937925895
-    second: idle-0003-Sheet_4
+      213: 1491494010556472465
+    second: gem-0001-Sheet_4
   - first:
-      213: 1600451927895069441
-    second: idle-0003-Sheet_5
+      213: 5999811580006011640
+    second: gem-0001-Sheet_5
   - first:
-      213: -6548941640146187805
-    second: idle-0003-Sheet_6
+      213: 4866083696956115496
+    second: gem-0001-Sheet_6
   - first:
-      213: -2070024872619345855
-    second: idle-0003-Sheet_7
+      213: -7794849929699152985
+    second: gem-0001-Sheet_7
+  - first:
+      213: 3601062981340392251
+    second: gem-0001-Sheet_8
+  - first:
+      213: -7795937451955205543
+    second: gem-0001-Sheet_9
+  - first:
+      213: -7292218919119245318
+    second: gem-0001-Sheet_10
+  - first:
+      213: 784948248103050464
+    second: gem-0001-Sheet_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -122,7 +134,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -135,7 +147,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,13 +159,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle-0003-Sheet_0
+      name: gem-0001-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 7
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f7e71de2c7d3a420800000000000000
-      internalID: 2640191038770636793
+      spriteID: 3f47c6cec42c6eb20800000000000000
+      internalID: 3163429423914185971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_1
+      name: gem-0001-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 39
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e70d95b716ed0ad80800000000000000
-      internalID: -8241342807825330050
+      spriteID: 0d1442b2151066ee0800000000000000
+      internalID: -1268324796930440752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_2
+      name: gem-0001-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 71
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d580630117f8d0c00800000000000000
-      internalID: 868508018918426717
+      spriteID: 2290c4f91dcd4e9a0800000000000000
+      internalID: -6204591593730864862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_3
+      name: gem-0001-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
+        x: 103
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9e117a5e0c1bf1d0800000000000000
-      internalID: -3316025852655755619
+      spriteID: 5767eb40f4169aef0800000000000000
+      internalID: -96438925001853323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_4
+      name: gem-0001-Sheet_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
+        x: 135
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +262,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70544721a8a551420800000000000000
-      internalID: 2600083908937925895
+      spriteID: 19c57db76e9d2b410800000000000000
+      internalID: 1491494010556472465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_5
+      name: gem-0001-Sheet_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
+        x: 167
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10356428c82f53610800000000000000
-      internalID: 1600451927895069441
+      spriteID: 8f29889f7dc934350800000000000000
+      internalID: 5999811580006011640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_6
+      name: gem-0001-Sheet_6
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
+        x: 199
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,20 +306,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e9825ca64c7d15a0800000000000000
-      internalID: -6548941640146187805
+      spriteID: 82a836c375dc78340800000000000000
+      internalID: 4866083696956115496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle-0003-Sheet_7
+      name: gem-0001-Sheet_7
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
+        x: 231
+        y: 5
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,8 +328,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 148fc47885bc543e0800000000000000
-      internalID: -2070024872619345855
+      spriteID: 7abadcea94123d390800000000000000
+      internalID: -7794849929699152985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gem-0001-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 5
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b6a98c3bb89f130800000000000000
+      internalID: 3601062981340392251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gem-0001-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 5
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95acb0d21344fc390800000000000000
+      internalID: -7795937451955205543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gem-0001-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 5
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: affa3856785dcca90800000000000000
+      internalID: -7292218919119245318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gem-0001-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 5
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec5f37d542b4ea00800000000000000
+      internalID: 784948248103050464
       vertices: []
       indices: 
       edges: []
@@ -326,7 +426,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d39af8adec2cb9d41b0fa6a871240097
+    spriteID: 9a97abd27c21a96469d9ca65bc20e83e
     internalID: 0
     vertices: []
     indices: 
@@ -336,16 +436,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      idle-0003-Sheet_0: 2640191038770636793
-      idle-0003-Sheet_1: -8241342807825330050
-      idle-0003-Sheet_2: 868508018918426717
-      idle-0003-Sheet_3: -3316025852655755619
-      idle-0003-Sheet_4: 2600083908937925895
-      idle-0003-Sheet_5: 1600451927895069441
-      idle-0003-Sheet_6: -6548941640146187805
-      idle-0003-Sheet_7: -2070024872619345855
+      gem-0001-Sheet_0: 3163429423914185971
+      gem-0001-Sheet_1: -1268324796930440752
+      gem-0001-Sheet_10: -7292218919119245318
+      gem-0001-Sheet_11: 784948248103050464
+      gem-0001-Sheet_2: -6204591593730864862
+      gem-0001-Sheet_3: -96438925001853323
+      gem-0001-Sheet_4: 1491494010556472465
+      gem-0001-Sheet_5: 5999811580006011640
+      gem-0001-Sheet_6: 4866083696956115496
+      gem-0001-Sheet_7: -7794849929699152985
+      gem-0001-Sheet_8: 3601062981340392251
+      gem-0001-Sheet_9: -7795937451955205543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

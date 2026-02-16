@@ -4,17 +4,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Animator anim;
-    [Header("Movement Settings")]
+
+    [Header("Movement")]
     [SerializeField] float moveSpeed = 20;
     [SerializeField] float sprintSpeed = 30;
     [SerializeField] float sneakSpeed = 10;
 
-    [Header("Noise Settings")]
+    [Header("Noise")]
     [SerializeField] float movingRadius = 5;
     [SerializeField] float sprintingRadius = 7;
     [SerializeField] float sneakingRaius = 3;
     [SerializeField] float timeToDropGold = 3;
+
+    [Header("Animation")]
+    [SerializeField] float _baseAnimSpeed;
+    [SerializeField] float _sprintAnimSpeed;
+    [SerializeField] float _sneakAnimSpeed;
 
 
     bool isMoving = false;
@@ -23,7 +28,9 @@ public class PlayerMovement : MonoBehaviour
     float currentMovementSpeed = 0;
     float goldDropTimer;
     Vector2 moveDirection;
+    SpriteRenderer sr;
     Rigidbody2D rb;
+    Animator anim;
     Transform noiseRadius;
     PlayerInventory goldBag;
 
@@ -32,13 +39,17 @@ public class PlayerMovement : MonoBehaviour
     {
         noiseRadius = transform.GetChild(0).GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         currentMovementSpeed = moveSpeed;
         goldBag = GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        SpriteAndAnim();
+
         rb.AddForce(moveDirection * currentMovementSpeed * 10);
 
         if(isMoving)
@@ -66,6 +77,18 @@ public class PlayerMovement : MonoBehaviour
         {
             noiseRadius.localScale = Vector3.zero;
         }
+    }
+
+    void SpriteAndAnim()
+    {
+        if (rb.linearVelocityX > 0) sr.flipX = false;
+        else if (rb.linearVelocityX < 0) sr.flipX = true;
+
+        anim.SetBool("IsWalking", isMoving);
+
+        if (currentMovementSpeed == moveSpeed) anim.SetFloat("WalkAnimSpeed", _baseAnimSpeed);
+        else if (currentMovementSpeed == sprintSpeed) anim.SetFloat("WalkAnimSpeed", _sprintAnimSpeed);
+        else if (currentMovementSpeed == sneakSpeed) anim.SetFloat("WalkAnimSpeed", _sneakAnimSpeed);       
     }
 
     void OnMove(InputValue moveValue)
