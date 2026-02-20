@@ -48,5 +48,32 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 812553047
+    locked: 0
+  - name: Walls
+    uniqueID: 2381523903
+    locked: 0
+  - name: Button Case
+    uniqueID: 401227109
+    locked: 0
+  - name: Button
+    uniqueID: 62888883
+    locked: 0
+  - name: Door
+    uniqueID: 1974979509
+    locked: 0
+  - name: Gem
+    uniqueID: 110052905
+    locked: 0
+  - name: Coin
+    uniqueID: 341203135
+    locked: 0
+  - name: Enemy
+    uniqueID: 3353897289
+    locked: 0
+  - name: Player
+    uniqueID: 1838068829
+    locked: 0
   m_RenderingLayers:
   - Default
