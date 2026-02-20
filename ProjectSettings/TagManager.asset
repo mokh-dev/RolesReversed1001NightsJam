@@ -10,6 +10,7 @@ TagManager:
   - Button
   - Door
   - Gem
+  - Coin
   layers:
   - Default
   - TransparentFX

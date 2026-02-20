@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -24,6 +25,11 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float _chaseCalmDownTime;
     [SerializeField] private float _patrolPointStopTime;
     [SerializeField] private Vector2[] _patrolPathPoints;
+
+    [Header("Extra")]
+    [SerializeField] bool _canDieToGem;
+    [SerializeField] bool _canHurtPlayer;
+    [SerializeField] int _hurtPlayerAmmount = 1;
 
 
     //Basic Variables
@@ -179,17 +185,22 @@ public class EnemyBehavior : MonoBehaviour
     }
 
 
-    //Colliders and Triggers-------------------------------------------------------------------------------------
+    //Colliders and Triggers---------------------------------------------------------------------------------
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (_canHurtPlayer && collision.gameObject.CompareTag("Player"))
         {
-            //player.GetComponent<PlayerInventory>().removeGold(1);
+            player.GetComponent<PlayerInventory>().removeGold(_hurtPlayerAmmount);
         }
 
         if ((distractionObject != null) && (collision.gameObject == distractionObject))
         {
             StartCoroutine(DistractionCalmDownTimer());
+        }
+
+        if(_canDieToGem && collision.collider.CompareTag("Gem") && collision.relativeVelocity.magnitude > 5)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -264,7 +275,7 @@ public class EnemyBehavior : MonoBehaviour
                 timer = 0;
             }
         }
-        else if(alertMeter > _alertThreshhold)
+        else if(alertMeter >= _alertThreshhold)
         {
             alertMeter = _alertThreshhold + (_noiseAlertGain * 20);
         }
@@ -304,6 +315,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(alertMeter >= _alertThreshhold)
         {
+            canSeePlayer = true;
             if(sr.color != Color.red)
             {
                 sr.color = Color.red;
@@ -311,6 +323,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(alertMeter > _alertThreshhold/2)
         {
+            canSeePlayer = false;
             if(sr.color != Color.orange)
             {
                 sr.color = Color.orange;
@@ -318,6 +331,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(alertMeter > _alertThreshhold/4)
         {
+            canSeePlayer = false;
             if(sr.color != Color.yellow)
             {
                 sr.color = Color.yellow;
@@ -325,6 +339,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(alertMeter < _alertThreshhold/4 && sr.color != Color.green)
         {
+            canSeePlayer = false;
             sr.color = Color.green;
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GoldGrab : MonoBehaviour
 {
-    [SerializeField] float timeToWake;
+    [SerializeField] float repeatCheckTime;
     [SerializeField] int goldAmmount;
     GameObject player;
     PlayerInventory goldBag;
@@ -14,8 +14,7 @@ public class GoldGrab : MonoBehaviour
         goldBag = player.GetComponent<PlayerInventory>();
         goldTrigger = GetComponent<Collider2D>();
         goldTrigger.enabled = false;
-
-        StartCoroutine(startTrigger(timeToWake));
+        StartCoroutine(startTrigger(repeatCheckTime));
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +29,9 @@ public class GoldGrab : MonoBehaviour
     IEnumerator startTrigger (float time)
     {
         yield return new WaitForSeconds(time);
-        goldTrigger.enabled = true;
+        if (transform.parent.GetComponent<Rigidbody2D>().linearVelocity.magnitude <= (new Vector2(0.3f, 0.3f)).magnitude)
+            goldTrigger.enabled = true;
+        else
+            StartCoroutine(startTrigger(repeatCheckTime));
     }
 }

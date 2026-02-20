@@ -169,11 +169,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   _visionStartPoint: {fileID: 7893389917135757724}
-  _lookRotationOffset: -90
   _patrolMovementSpeed: 4
   _distractionMovementSpeed: 3
   _chasingMovementSpeed: 7
-  _lookSmoothing: 0.5
   _distractionCalmDownTime: 3
   _chaseCalmDownTime: 5
   _patrolPointStopTime: 4
@@ -181,11 +179,15 @@ MonoBehaviour:
   - {x: -8, y: -4}
   - {x: -2, y: -3}
   - {x: -4, y: -2}
+  _canDieToGem: 0
+  _canHurtPlayer: 0
+  _hurtPlayerAmmount: 1
   canSeePlayer: 0
   canSeeDistraction: 0
   isDistracted: 0
   onPatrol: 0
   onCalmDownTimer: 0
+  onDistractionTimer: 0
   onPatrolPointStopCooldown: 0
   currentTargetPatrolPoint: 0
 --- !u!50 &3108609715948010112

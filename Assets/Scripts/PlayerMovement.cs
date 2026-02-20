@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         SpriteAndAnim();
 
-        rb.AddForce(moveDirection * currentMovementSpeed * 10);
+        rb.AddForce(moveDirection * currentMovementSpeed * Time.deltaTime * 2000);
 
         if(isMoving)
         {
@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 noiseRadius.localScale = new(sprintingRadius, sprintingRadius, sprintingRadius);
                 goldDropTimer += Time.deltaTime;
+
                 if(goldDropTimer >= timeToDropGold)
                 {
                     goldBag.removeGold(1);

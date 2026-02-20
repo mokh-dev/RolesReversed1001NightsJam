@@ -2,12 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Net;
+using Unity.Mathematics;
 
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] int maxGold = 5;
     [SerializeField] float _gemThrowForce;
+    [SerializeField] float _coinThrowForce;
+    [SerializeField] GameObject _coinToSummon;
+
+    Vector2 worldPos;
+    GameObject thrownCoin;
     int currentGold;
 
     Camera cam;
@@ -84,5 +91,16 @@ public class PlayerInventory : MonoBehaviour
         heldGems[0].GetComponent<Rigidbody2D>().AddForce(throwDirection * _gemThrowForce, ForceMode2D.Impulse);
 
         heldGems.RemoveAt(0);
+    }
+
+    void OnThrowCoin(InputValue input)
+    {
+        if (currentGold <= 0) return;
+
+        thrownCoin = Instantiate(_coinToSummon, gameObject.transform.position, quaternion.identity);
+        thrownCoin.GetComponent<Rigidbody2D>().linearVelocity = gameObject.GetComponent<Rigidbody2D>().linearVelocity;
+        Vector2 throwDirection = (cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - thrownCoin.transform.position).normalized;
+        thrownCoin.GetComponent<Rigidbody2D>().AddForce(throwDirection * _coinThrowForce, ForceMode2D.Impulse);
+        removeGold(1);
     }
 }
