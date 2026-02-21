@@ -882,6 +882,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1819718334659319227, guid: 8f7379493dbc4e445baafb10afbd72c1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1838068829
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819718334659319227, guid: 8f7379493dbc4e445baafb10afbd72c1, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
@@ -928,6 +932,10 @@ PrefabInstance:
     - target: {fileID: 5770832185549828685, guid: 8f7379493dbc4e445baafb10afbd72c1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541228101676190754, guid: 8f7379493dbc4e445baafb10afbd72c1, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
