@@ -10,6 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Noise Detection")]
     [SerializeField] float _noiseAlertGain = 0.4f;
     [SerializeField] float _alertThreshhold = 15;
+    [SerializeField] float _enemyMemory = 3f;
 
     [Header("Vision Detection")]
     [SerializeField] private float _detectionRange;
@@ -36,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
     bool heardNoise = false;
     bool isLooping = false;
     
-    float alertMeter = 0;
+    [SerializeField] float alertMeter = 0;
     float timer = 0;
     float ySmoothVelo = 0.0f;
 
@@ -209,6 +210,7 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.CompareTag("Noise"))
         {
             heardNoise = true;
+            isLooping = false;
         }
     }
 
@@ -243,8 +245,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            canSeePlayer = false;
-            StartCoroutine(ChaseCalmDownTimer());
+            //canSeePlayer = false;
+            
+            StartCoroutine(RemoveAlert(_noiseAlertGain));
+            //StartCoroutine(ChaseCalmDownTimer());
         }
 
         if (collision.gameObject.CompareTag("Distraction") || collision.gameObject.CompareTag("Gem"))
@@ -259,6 +263,7 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             canSeePlayer = RaycastCheck(collision.gameObject, _playerDetectionLayers);
+            alertMeter = _alertThreshhold + (_noiseAlertGain * 2 * _enemyMemory);
         }
     }
 
@@ -277,7 +282,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(alertMeter >= _alertThreshhold)
         {
-            alertMeter = _alertThreshhold + (_noiseAlertGain * 20);
+            alertMeter = _alertThreshhold + (_noiseAlertGain * 2 * _enemyMemory);
         }
 
         AlertBehavior();
@@ -288,14 +293,16 @@ public class EnemyBehavior : MonoBehaviour
         if(!isLooping)
         {
             isLooping = true;
-            while(!heardNoise && alertMeter > 0)
+            while(alertMeter > 0)
             {
+                if(!isLooping) break;
+
                 if (alertMeter > 0)
                 {
                     timer += Time.deltaTime;
                     if (timer >= 0.25f)
                     {
-                        alertMeter -= alert;
+                        alertMeter -= alert/2;
                         timer = 0;
                     }
                 }
