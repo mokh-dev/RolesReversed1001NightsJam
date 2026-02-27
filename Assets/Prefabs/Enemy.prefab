@@ -159,9 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c269a4f09ce98648bfc7091dd962b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior
-  _noiseAlertGain: 1
+  _noiseAlertGain: 2
   _alertThreshhold: 6
+  _enemyMemory: 3
   _detectionRange: 3
+  _lookRotationOffset: 0
   _distractionDetectionLayers:
     serializedVersion: 2
     m_Bits: 768
@@ -169,19 +171,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   _visionStartPoint: {fileID: 7893389917135757724}
-  _patrolMovementSpeed: 4
-  _distractionMovementSpeed: 3
-  _chasingMovementSpeed: 7
+  _visionConeRb: {fileID: 4018435453444685853}
+  _patrolMovementSpeed: 20
+  _distractionMovementSpeed: 30
+  _chasingMovementSpeed: 150
   _distractionCalmDownTime: 3
   _chaseCalmDownTime: 5
   _patrolPointStopTime: 4
-  _patrolPathPoints:
-  - {x: -8, y: -4}
-  - {x: -2, y: -3}
-  - {x: -4, y: -2}
+  _patrolPathPoints: []
   _canDieToGem: 0
   _canHurtPlayer: 0
   _hurtPlayerAmmount: 1
+  alertMeter: 0
   canSeePlayer: 0
   canSeeDistraction: 0
   isDistracted: 0
@@ -259,6 +260,7 @@ GameObject:
   - component: {fileID: 4512463918007851790}
   - component: {fileID: 6586518792499205417}
   - component: {fileID: 2338398220804534177}
+  - component: {fileID: 4018435453444685853}
   m_Layer: 0
   m_Name: Vision Cone
   m_TagString: Untagged
@@ -344,6 +346,33 @@ PolygonCollider2D:
       - {x: -1, y: 3}
       - {x: 1, y: 3}
   m_UseDelaunayMesh: 1
+--- !u!50 &4018435453444685853
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557226015668451895}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8534593351012477582
 GameObject:
   m_ObjectHideFlags: 0

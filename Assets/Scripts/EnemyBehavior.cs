@@ -14,9 +14,11 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Vision Detection")]
     [SerializeField] private float _detectionRange;
+    [SerializeField] private float _lookRotationOffset;
     [SerializeField] private LayerMask _distractionDetectionLayers;
     [SerializeField] private LayerMask _playerDetectionLayers;
     [SerializeField] private Transform _visionStartPoint;
+    [SerializeField] private Rigidbody2D _visionConeRb;
 
     [Header("Enemy Movement")]
     [SerializeField] private float _patrolMovementSpeed;
@@ -117,6 +119,7 @@ public class EnemyBehavior : MonoBehaviour
         if (_patrolPathPoints.Length <= 0) return;
         if (onPatrolPointStopCooldown == true) return;
 
+        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
         bool withinMarginOfPatrolPoint = Vector2.Distance(transform.position, _patrolPathPoints[currentTargetPatrolPoint]) <= 0.05f;
         
         if (withinMarginOfPatrolPoint == true && onPatrolPointStopCooldown == false)
@@ -135,6 +138,8 @@ public class EnemyBehavior : MonoBehaviour
         yield return new WaitForSeconds(_patrolPointStopTime);
 
         currentTargetPatrolPoint = (currentTargetPatrolPoint == _patrolPathPoints.Length-1) ? 0 : currentTargetPatrolPoint+1;
+        LookAtPosition(_patrolPathPoints[currentTargetPatrolPoint]);
+
         onPatrolPointStopCooldown = false;
     }
 
@@ -150,15 +155,31 @@ public class EnemyBehavior : MonoBehaviour
         
         if (canSeeDistraction)
         {
+            LookAtPosition(distractionObject.transform.position);
             distractionDirection = (distractionObject.transform.position - transform.position).normalized;
         }
         else
         {
+            LookAtPosition(lastSeenDistractionPosition);
             distractionDirection = (lastSeenDistractionPosition - (Vector2)transform.position).normalized;
         }
         
         rb.AddForce(distractionDirection * _distractionMovementSpeed);
     }
+
+    private void LookAtPosition(Vector2 positionToLook)
+    {
+        Debug.Log("look   " + positionToLook.ToString());
+
+        Vector2 lookDirection = (positionToLook - (Vector2)transform.position).normalized;
+        float enemyAngle = (Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg) + _lookRotationOffset;
+
+        
+        //float smoothedAngled = Mathf.SmoothDampAngle(transform.rotation.z, enemyAngle, ref ySmoothVelo, _lookSmoothing);
+
+        _visionConeRb.SetRotation(enemyAngle);
+    }
+
     IEnumerator ChaseCalmDownTimer()
     {
         onCalmDownTimer = true;

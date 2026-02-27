@@ -377,9 +377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57b4f6d484b68744952a767dc735a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  sprintSpeed: 7
-  sneakSpeed: 2
+  moveSpeed: 2.5
+  sprintSpeed: 4
+  sneakSpeed: 1.5
   movingRadius: 5
   sprintingRadius: 7
   sneakingRaius: 3
